@@ -2,7 +2,7 @@ var wsock = require('websocket-stream');
 var stream = wsock('ws://' + location.host);
 
 var vdom = require('virtual-dom');
-var h = vdom.h
+var h = vdom.h;
 var main = require('main-loop');
 var loop = main({ lines: [] }, render, vdom);
 document.querySelector('#content').appendChild(loop.target);
