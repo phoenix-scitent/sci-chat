@@ -1,0 +1,10 @@
+@import url('./node_modules/medium-editor/dist/css/medium-editor.css');
+@import url('./node_modules/medium-editor/dist/css/themes/bootstrap.css');
+
+.medium-editor-placeholder {
+  cursor: pointer;
+}
+
+.medium-editor-placeholder:after {
+  color: black;
+}
