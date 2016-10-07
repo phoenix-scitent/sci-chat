@@ -1,6 +1,6 @@
-var ecstatic = require('ecstatic')
+var ecstatic = require('ecstatic');
 var st = ecstatic(__dirname + '/public');
-var http = require('http')
+var http = require('http');
 var server = http.createServer(function (req, res) {
   st(req, res)
 });
@@ -17,7 +17,7 @@ wsock.createServer({ server: server }, function (stream) {
   onend(stream, function () {
     var ix = streams.indexOf(stream);
     if (ix >= 0) streams.splice(ix, 1)
-  })
+  });
 
   stream
       .pipe(split())
