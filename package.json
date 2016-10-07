@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/phoenix-scitent/sci-chat/issues"
   },
-  "homepage": "https://github.com/phoenix-scitent/sci-chat#readme"
+  "homepage": "https://github.com/phoenix-scitent/sci-chat#readme",
+  "dependencies": {
+    "end-of-stream": "^1.1.0",
+    "exstatic": "^0.3.2",
+    "flexboxgrid": "^6.3.1",
+    "main-loop": "^3.4.0",
+    "split2": "^2.1.0",
+    "through2": "^2.0.1",
+    "virtual-dom": "^2.1.1",
+    "websocket-stream": "^3.3.0"
+  }
 }
