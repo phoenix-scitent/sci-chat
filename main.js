@@ -42,9 +42,10 @@ function render (state) {
     h('form', { onsubmit: chat }, [
       h('input', { type: 'text', name: 'msg' })
     ]),
-    h('div.lines', state.lines.map(function (line) {
-      return h('pre', line)
-    }))
+    h('div.lines', h('pre', JSON.stringify(state.lines)))
+    // h('div.lines', state.lines.map(function (line) {
+    //   return h('pre', line)
+    // }))
   ]);
 
   function chat (ev) {
