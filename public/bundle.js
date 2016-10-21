@@ -9969,7 +9969,6 @@ function extend(target) {
 },{}],82:[function(require,module,exports){
 var unicodes = [
 '☢',
-'☣',
 '☠',
 '⚠',
 '☯',
