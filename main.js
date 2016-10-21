@@ -1,6 +1,6 @@
 var wsock = require('websocket-stream');
 var stream = wsock('ws://' + location.host);
-
+var unicodes = require('./unicodes.js');
 console.log('listening @ ws://' + location.host );
 
 var vdom = require('virtual-dom');

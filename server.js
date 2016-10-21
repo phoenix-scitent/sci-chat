@@ -32,6 +32,7 @@ wsock.createServer({ server: server }, function(stream){
 
   function write(line, enc, next){
     streams.forEach(function(stream){
+      console.log(stream);
       stream.write(line + '\n');
     });
     next();
