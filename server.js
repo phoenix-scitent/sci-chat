@@ -28,11 +28,11 @@ wsock.createServer({ server: server }, function(stream){
 
   stream
     .pipe(split())
-    .pipe(through(write));
+    .pipe(through(function(line, enc, next){ write(streams.indexOf(stream) + ':' + line, enc, next) }));
 
   function write(line, enc, next){
     streams.forEach(function(stream,index){
-      stream.write(index + ': ' + line + '\n');
+      stream.write(line + '\n');
     });
     next();
   }
