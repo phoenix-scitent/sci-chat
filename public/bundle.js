@@ -16,7 +16,7 @@ var through = require('through2');
 
 stream.pipe(split()).pipe(through(function (line, enc, next) {
   var lines = loop.state.lines;
-  lines.push(line.toString());
+  lines.splice(0,0,line.toString());
   loop.update({ lines: lines });
   //loop.update({ lines: lines.slice(-10) }); // keep only the 10 most recent lines
   next()
@@ -43,10 +43,10 @@ function render (state) {
     h('form', { onsubmit: chat }, [
       h('input', { type: 'text', name: 'msg' })
     ]),
-    h('div.lines', h('pre', JSON.stringify(state.lines)))
-    // h('div.lines', state.lines.map(function (line) {
-    //   return h('pre', line)
-    // }))
+    // h('div.lines', h('pre', JSON.stringify(state.lines)))
+    h('div.lines', state.lines.map(function (line) {
+       return h('pre', line)
+    }))
   ]);
 
   function chat (ev) {
