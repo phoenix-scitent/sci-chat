@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var wsock = require('websocket-stream');
 var stream = wsock('ws://' + location.host);
-
+var unicodes = require('./unicodes.js');
 console.log('listening @ ws://' + location.host );
 
 var vdom = require('virtual-dom');
@@ -55,7 +55,7 @@ function render (state) {
     this.reset()
   }
 }
-},{"main-loop":23,"split2":35,"through2":44,"virtual-dom":52,"websocket-stream":76}],2:[function(require,module,exports){
+},{"./unicodes.js":82,"main-loop":23,"split2":35,"through2":44,"virtual-dom":52,"websocket-stream":76}],2:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -9966,4 +9966,54 @@ function extend(target) {
     return target
 }
 
+},{}],82:[function(require,module,exports){
+var unicodes = [
+'☢',
+'☣',
+'☠',
+'⚠',
+'☯',
+'⚖',
+'☮',
+'⚘',
+'⚔',
+'⚒',
+'⚓',
+'⚛',
+'⚜',
+'⚡',
+'☥',
+'☫',
+'☬',
+'☸',
+'✵',
+'❂',
+'☘',
+'♡',
+'⚘',
+'❀',
+'❃',
+'❁',
+'✼',
+'☀',
+'✌',
+'♫',
+'♪',
+'☃',
+'❄',
+'❅',
+'❆',
+'☕',
+'☂',
+'❦',
+'✈',
+'♕',
+'♛',
+'♖',
+'♜',
+'☁',
+'☾'
+];
+
+module.exports = unicodes
 },{}]},{},[1]);
