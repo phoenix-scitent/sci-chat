@@ -4,6 +4,7 @@ var http = require('http');
 var server = http.createServer(function (req, res) {
   st(req, res);
 });
+var unicodes = require('./unicodes.js');
 
 var port = 5000;
 
@@ -28,7 +29,7 @@ wsock.createServer({ server: server }, function(stream){
 
   stream
     .pipe(split())
-    .pipe(through(function(line, enc, next){ write(streams.indexOf(stream) + ':' + line, enc, next) }));
+    .pipe(through(function(line, enc, next){ write(unicodes[streams.indexOf(stream)] + ': ' + line, enc, next) }));
 
   function write(line, enc, next){
     streams.forEach(function(stream,index){
