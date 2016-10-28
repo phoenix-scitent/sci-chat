@@ -1,3 +1,5 @@
+const NUM_HISTORY_CHATS = 10;
+
 var ecstatic = require('ecstatic');
 var st = ecstatic(__dirname + '/public');
 
@@ -39,7 +41,11 @@ wsock.createServer({ server: server }, function(stream){
 
   stream
     .pipe(split())
-    .pipe(through(function(line, enc, next){ write(unicodes[streams.indexOf(stream)] + ': ' + line, enc, next) }));
+    .pipe(through(function(line, enc, next){ 
+      var id = streams.indexOf(stream)
+      write(unicodes[id] + ': ' + line, enc, next); 
+      persist({id:id,line:line});
+    }));
 
   function write(line, enc, next){
     streams.forEach(function(stream,index){
@@ -48,4 +54,12 @@ wsock.createServer({ server: server }, function(stream){
     next();
   }
 
+  function persist(obj) { // put stores key, value.  Here: timestamp, obj
+    var time = process.hrtime().join('');
+    put(time,obj,function(err){
+      get(time,function(err,value){
+        console.log(value);
+      });
+    });
+  }
 });
