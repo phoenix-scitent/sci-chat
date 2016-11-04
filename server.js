@@ -11,6 +11,13 @@ var put = function(key,value,callback) {
 var get = function(key,callback) {
   db.get(key,callback);
 }
+var getPrevious = function(limit,callback) {
+  db.createReadStream({limit:limit,reverse:true})
+    .on('data',function(data){
+    // also available: data.key
+    callback(data.value);
+  });
+}
 
 var http = require('http');
 var server = http.createServer(function (req, res) {
@@ -38,6 +45,9 @@ wsock.createServer({ server: server }, function(stream){
     var ix = streams.indexOf(stream);
     if (ix >= 0) streams.splice(ix, 1)
   });
+
+  getPrevious(10,stream.write);
+  //stream.write(get);
 
   stream
     .pipe(split())
