@@ -14,6 +14,7 @@ var split = require('split2');
 var through = require('through2');
 
 stream.pipe(split()).pipe(through(function (line, enc, next) {
+  console.log('stream pipe thru');
   var lines = loop.state.lines;
   lines.splice(0,0,line.toString());
   loop.update({ lines: lines });

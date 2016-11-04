@@ -15,7 +15,9 @@ var getPrevious = function(limit,callback) {
   db.createReadStream({limit:limit,reverse:true})
     .on('data',function(data){
     // also available: data.key
-    callback(data.value);
+    // callback(data.value);
+    console.log(data.value);
+    callback(JSON.stringify(data.value.line + '\n'));
   });
 }
 
@@ -47,7 +49,8 @@ wsock.createServer({ server: server }, function(stream){
   });
 
   getPrevious(10,stream.write);
-  //stream.write(get);
+  // stream.write(get);
+  // stream.write('joining... \n');
 
   stream
     .pipe(split())
