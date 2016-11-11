@@ -17,7 +17,9 @@ var getPrevious = function(limit,callback) {
     // also available: data.key
     // callback(data.value);
     console.log(data.value);
-    callback(JSON.stringify(data.value.line + '\n'));
+    var dvld = data.value.line.data;
+    var str = String.fromCharCode.apply(null,dvld);
+    callback(str + '\n');
   });
 }
 
@@ -48,7 +50,9 @@ wsock.createServer({ server: server }, function(stream){
     if (ix >= 0) streams.splice(ix, 1)
   });
 
-  getPrevious(10,stream.write);
+  getPrevious(10,function(line){
+    stream.write(line);
+  });
   // stream.write(get);
   // stream.write('joining... \n');
 
